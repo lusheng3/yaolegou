@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/yaolegoudb?useSSL=true&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
+                <property name="username" value="root"/>
+                <property name="password" value="20030921hyh"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--        <mapper resource="edu/ustb/dao/BannerMapper.xml"/>-->
+        <mapper class="edu.ustb.yaolegou.dao.BannerMapper"/>
+        <mapper class="edu.ustb.yaolegou.dao.UserMapper"/>
+    </mappers>
+</configuration>

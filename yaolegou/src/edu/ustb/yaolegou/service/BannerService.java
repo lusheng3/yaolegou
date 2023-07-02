@@ -1,0 +1,32 @@
+package edu.ustb.yaolegou.service;
+
+import edu.ustb.yaolegou.dao.BannerMapper;
+import edu.ustb.yaolegou.entity.Banner;
+import edu.ustb.yaolegou.utils.MybatisUtil;
+import org.apache.ibatis.session.SqlSession;
+
+import java.util.ArrayList;
+
+public class BannerService {
+    public ArrayList<Banner> getAll(){
+        ArrayList<Banner> list = null;
+        SqlSession session = null;
+        try {
+            session = MybatisUtil.getSession();
+
+            BannerMapper siMapper = session.getMapper(BannerMapper.class);
+            list = siMapper.selectAll();
+
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+//资源释放
+            if(session != null){
+                session.close();
+            }
+        }
+        return list;
+    }
+}
