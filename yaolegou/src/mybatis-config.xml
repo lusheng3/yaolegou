@@ -18,5 +18,6 @@
         <!--        <mapper resource="edu/ustb/dao/BannerMapper.xml"/>-->
         <mapper class="edu.ustb.yaolegou.dao.BannerMapper"/>
         <mapper class="edu.ustb.yaolegou.dao.UserMapper"/>
+        <mapper class="edu.ustb.yaolegou.dao.ShopInfoMapper"/>
     </mappers>
 </configuration>

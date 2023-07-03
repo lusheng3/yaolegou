@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="zhuti">
         <div id="biao">
             <p id="label">新用户注册</p>
-            <form action="ZhuCe.do" method="post">
+            <form action="reg" method="post">
                 <input type="text" name="phone" id="text" placeholder="手机号码">
                 <div class="phone" id="phone"></div>
                 <p id="yzm" style="margin-top: 7.5px;margin-bottom: 7.5px;cursor: pointer">点击获取验证码</p>

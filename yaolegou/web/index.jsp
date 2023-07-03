@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    <input type="text" name="yzm" placeholder="验证码" id="yzm">
 				    <span id="idcode">验证码初始化</span>
 				    <biao style="font-size:12px;color:red;width:350px;display:inline-block;margin:3px 0px;margin-left:50px;" id="yz">&nbsp;</biao>
-				    <hang><input type="checkbox" name="gou" id="fws">同意 瑶乐购 服务条款<gou id="gou" style="margin-left:20px;color:red;display:none;">请勾选服务条款</gou><a href="ZhuCe.jsp" target="_blank">注册账号</a></hang>	
+				    <hang><input type="checkbox" name="gou" id="fws">同意 瑶乐购 服务条款<gou id="gou" style="margin-left:20px;color:red;display:none;">请勾选服务条款</gou><a href="reg1.jsp" target="_blank">注册账号</a></hang>
 				    <input type="submit" name = "submit" value="登 录" id="tijiao">
 				</form>
 				
@@ -148,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   						</li>
   					</c:if>
   					
-  					<li onclick="window.open('ZhuCe.jsp')">注册</li>
+  					<li onclick="window.open('reg1.jsp')">注册</li>
   					<li class="xia">我的订单 <img src="Image/xiala2.png" alt=""></li>
   					<li onclick="window.open('GouWuChe.do?UserName=${user.userName}')"><img src="Image/Index_Image/xiaogouwuche.png" alt=""> 购物车</li>
   					<li>企业采购</li>

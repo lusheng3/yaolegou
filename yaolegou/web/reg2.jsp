@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		$(".qr").click(function (){
     			var pwd = $("#miam").val();
     			var phone = $("#phone").val();
-    			$.post("ZhuCe.do",{"State":"add","pwd":pwd,"phone":phone},function (Data){
+    			$.post("reg",{"State":"add","pwd":pwd,"phone":phone},function (Data){
     				if(Data != null){
     					$("#UserName").html(Data);
     				}

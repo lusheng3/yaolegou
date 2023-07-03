@@ -7,6 +7,31 @@ public class User {
     private String userName;
     private String password;
 
+
+    private int state;
+    private Date CreateTime;
+    private String userNick;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    private String phone;
+
+    private  String image;
+
     public int getId() {
         return id;
     }
@@ -55,9 +80,6 @@ public class User {
         this.userNick = userNick;
     }
 
-    private int state;
-    private Date CreateTime;
-    private String userNick;
 
     @Override
     public String toString() {
