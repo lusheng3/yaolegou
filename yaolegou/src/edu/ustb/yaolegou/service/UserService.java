@@ -100,8 +100,7 @@ public class UserService {
         //LTAI5tAUcj5XmNgEMJjHSi25
         //J9OWqch6pDv3tanJlOTIFrR13ZPS2B
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
-                "LTAI5tAUcj5XmNgEMJjHSi25",
-                        "J9OWqch6pDv3tanJlOTIFrR13ZPS2B");
+                //此处填写密钥
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         request.setMethod(MethodType.POST);
