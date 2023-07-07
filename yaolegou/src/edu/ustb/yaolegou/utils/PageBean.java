@@ -2,15 +2,19 @@ package edu.ustb.yaolegou.utils;
 
 import java.util.List;
 
-/*
-分页相关的参数及结果List
- */
+/**
+* 分页相关参数及结果List
+*
+*/
 public class PageBean<T> {
-    private int pageIndex;  //当前页数
-    private int pageRecord;   //每页记录数
-    private int pageCount;    //总页数
-    private int totalRecord;   //总记录数
-
+    // 当前页
+    private int pageIndex;
+    //每一页记录数
+    private int pageRecord;
+    //总页数
+    private int pageCount;
+    //总记录数
+    private int totalRecord;
 
     public int getPageIndex() {
         return pageIndex;
@@ -51,5 +55,6 @@ public class PageBean<T> {
     public void setResultList(List<T> resultList) {
         this.resultList = resultList;
     }
-    private List<T> resultList;    //结果list
+
+    private List<T> resultList;
 }

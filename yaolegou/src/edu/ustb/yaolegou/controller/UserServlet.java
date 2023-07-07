@@ -5,28 +5,24 @@ import edu.ustb.yaolegou.entity.User;
 import edu.ustb.yaolegou.service.UserService;
 import edu.ustb.yaolegou.utils.CheckCodeUtil;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Random;
 
-@WebServlet(name = "UserServlet",value = "/reg")
+@WebServlet(name = "UserServlet", value = "/reg")
 public class UserServlet extends HttpServlet {
     UserService userService = new UserService();
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /*PrintWriter out = response.getWriter();*/
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
@@ -34,6 +30,7 @@ public class UserServlet extends HttpServlet {
 
         String State = request.getParameter("State");
         String phone = request.getParameter("phone");
+
         if(State == null){
             request.setAttribute("phone", phone);
             request.getRequestDispatcher("/reg2.jsp").forward(request, response);
@@ -60,10 +57,10 @@ public class UserServlet extends HttpServlet {
             String UserNick = name1[n1]+name2[n2];
 
             u.setUserNick(UserNick);
-
-//       //执行增加用户
+            //       //执行增加用户
 //       boolean is = ud.AddUserNameInfo(u);
             userService.userAdd(u);
+
             response.getWriter().print(UserName);
         }else if(State.equals("yanzhengs")){
             User user = userService.getUserByPhone(phone);
@@ -83,6 +80,4 @@ public class UserServlet extends HttpServlet {
         }
 
     }
-
 }
-

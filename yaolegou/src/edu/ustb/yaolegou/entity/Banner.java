@@ -3,39 +3,14 @@ package edu.ustb.yaolegou.entity;
 import java.util.Date;
 
 public class Banner {
+
     private int id;
     private String image;
-    private String bgcolor;
-
-    public String getBeizhu() {
-        return beizhu;
-    }
-
-    public void setBeizhu(String beizhu) {
-        this.beizhu = beizhu;
-    }
-
-    private int istingyong;
-    private String beizhu;
-    private Date CreateTime;
-
+    private String bgColor;
     private String href;
-
-    public int getIstingyong() {
-        return istingyong;
-    }
-
-    public void setIstingyong(int istingyong) {
-        this.istingyong = istingyong;
-    }
-
-    public String getHref() {
-        return href;
-    }
-
-    public void setHref(String href) {
-        this.href = href;
-    }
+    private int isTingYong;
+    private String beiZhu;
+    private Date CreateTime;
 
     public int getId() {
         return id;
@@ -53,15 +28,37 @@ public class Banner {
         this.image = image;
     }
 
-    public String getBgcolor() {
-        return bgcolor;
+    public String getBgColor() {
+        return bgColor;
     }
 
-    public void setBgcolor(String bgcolor) {
-        this.bgcolor = bgcolor;
+    public void setBgColor(String bgColor) {
+        this.bgColor = bgColor;
     }
 
+    public String getHref() {
+        return href;
+    }
 
+    public void setHref(String href) {
+        this.href = href;
+    }
+
+    public int getIsTingYong() {
+        return isTingYong;
+    }
+
+    public void setIsTingYong(int isTingYong) {
+        this.isTingYong = isTingYong;
+    }
+
+    public String getBeiZhu() {
+        return beiZhu;
+    }
+
+    public void setBeiZhu(String beiZhu) {
+        this.beiZhu = beiZhu;
+    }
 
     public Date getCreateTime() {
         return CreateTime;

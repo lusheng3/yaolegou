@@ -1,20 +1,20 @@
 package edu.ustb.yaolegou.utils;
 
-
 import java.util.Random;
+
 
 public class CheckCodeUtil {
     /**
-     * 生成指定位数的随机数字
+     * 生成指定位数的随机数
      * @param len 位数
      * @return
      */
     public static String getCode(int len){
         StringBuilder sb = new StringBuilder();
-        for(int i = 0;sb.length()<len;i++){
+        for (int i = 0; sb.length() < len; i++){
             int num = new Random().nextInt(10);
             sb.append(num);
         }
-        return sb.toString();
+    return sb.toString();
     }
 }

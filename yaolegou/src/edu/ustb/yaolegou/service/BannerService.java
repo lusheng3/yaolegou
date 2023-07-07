@@ -8,25 +8,25 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.ArrayList;
 
 public class BannerService {
-    public ArrayList<Banner> getAll(){
-        ArrayList<Banner> list = null;
-        SqlSession session = null;
-        try {
-            session = MybatisUtil.getSession();
+        //返回所有Banner列表
+        public ArrayList<Banner> getAll(){
+            ArrayList<Banner> list = null;
+            SqlSession session = null;
+            try {
+                session = MybatisUtil.getSession();
+                BannerMapper bannerMapper = session.getMapper(BannerMapper.class);
+                list = bannerMapper.selectAll();
 
-            BannerMapper siMapper = session.getMapper(BannerMapper.class);
-            list = siMapper.selectAll();
-
-
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        finally {
-//资源释放
-            if(session != null){
-                session.close();
+            }   catch(Exception e){
+                e.printStackTrace();
+            }finally{
+                //资源释放
+                if(session != null){
+                    session.close();
+                }
             }
+
+            return list;
         }
-        return list;
-    }
+
 }

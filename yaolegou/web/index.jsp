@@ -36,17 +36,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			//获取用户名和密码
     			var UserName = $("[name=UserName]").val();
     			var PassWord = $("[name=PassWord]").val();
+				var yzm = $("[name=yzm]").val();
     			//执行异步请求
-    			$.post("index",{"UserName":UserName,"PassWord":PassWord},function (Data){
+    			$.post("index",{"UserName":UserName,"PassWord":PassWord,"yzm":yzm},function (Data){
     				if(Data == "true"){
     					//加载页面
     					window.open("index","_self");
     				}else if(Data == "dongjie"){
     					$("#text").html("您的账号已违规法律暂被停用！");
     					$("#beijing").fadeIn("300");
-    				}else{
-    					$("#beijing").fadeIn("300");
+    				}else if (Data == "验证码错误") {
+    					$("#yz").html("验证码错误");
     				}
+					else{
+						$("#beijing").fadeIn("300");
+					}
     			})
     		})
     		
@@ -116,10 +120,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   	<biao style="font-size:12px;color:red;width:350px;display:inline-block;margin:3px 0px;margin-left:50px;" id="shouji">&nbsp;</biao>
 				    <input type="password" name="PassWord" placeholder="输入您的密码">
 				    <biao style="font-size:12px;color:red;width:350px;display:inline-block;margin:3px 0px;margin-left:50px;" id="mima">&nbsp;</biao>
-				    <input type="text" name="yzm" placeholder="验证码" id="yzm">
-				    <span id="idcode">验证码初始化</span>
-				    <biao style="font-size:12px;color:red;width:350px;display:inline-block;margin:3px 0px;margin-left:50px;" id="yz">&nbsp;</biao>
-				    <hang><input type="checkbox" name="gou" id="fws">同意 瑶乐购 服务条款<gou id="gou" style="margin-left:20px;color:red;display:none;">请勾选服务条款</gou><a href="reg1.jsp" target="_blank">注册账号</a></hang>
+				    <input type="text" name="yzm" placeholder="验证码" >
+				    <!--span id="idcode">验证码初始化</span-->
+					<img src="RandomServlet" onclick="this.src='RandomServlet?r='+Math.random();" class="cursor:pointer;" height="40px" alt="">
+					<biao style="font-size:12px;color:red;width:350px;display:inline-block;margin:3px 0px;margin-left:50px;" id="yz">&nbsp;</biao>
+				    <hang><input type="checkbox" name="gou" id="fws">同意 瑶乐购 服务条款<gou id="gou" style="margin-left:20px;color:red;display:none;">请勾选服务条款</gou><a href="reg.jsp" target="_blank">注册账号</a></hang>
 				    <input type="submit" name = "submit" value="登 录" id="tijiao">
 				</form>
 				
@@ -148,9 +153,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   						</li>
   					</c:if>
   					
-  					<li onclick="window.open('reg1.jsp')">注册</li>
+  					<li onclick="window.open('reg.jsp')">注册</li>
   					<li class="xia">我的订单 <img src="Image/xiala2.png" alt=""></li>
-  					<li onclick="window.open('GouWuChe.do?UserName=${user.userName}')"><img src="Image/Index_Image/xiaogouwuche.png" alt=""> 购物车</li>
+  					<li onclick="window.open('shopcart?UserName=${user.userName}')"><img src="Image/Index_Image/xiaogouwuche.png" alt=""> 购物车</li>
   					<li>企业采购</li>
   				</ul>
   			</div>
@@ -165,7 +170,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   						<input type="text" placeholder="看看搜点什么" name="sousuo"><p onclick="$('[id=serach]').submit()">搜 索</p>
         			</form>
         			<ul>
-        				<li class="style">上衣</li>
+						<li class="style"><a href="/yaolegou/shoplist">上衣</a></li>
         				<li class="shu" style="padding: 0px 10px;color: #ddd">|</li>
         				<li class="style">裤子</li>
         				<li class="shu" style="padding: 0px 10px;color: #ddd">|</li>
@@ -394,7 +399,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   						<img src="Image/Index_Image/ShangYi/banner.jpg" style="margin-left: 10px;margin-top: 10px" width="448px">
   					</div>
 					<c:forEach items="${ShouYeShopList1 }" var="sysl" begin="0"    end="1">
-  						<div onclick="window.open('ShangYi.do?State=Select&ShopId=${sysl.shopid }')" style="width: 227px;cursor:position;height: 300px;overflow: hidden; float: left;margin-left: 12px;cursor: pointer;" >
+  						<div onclick="window.open('ShangYi?State=Select&ShopId=${sysl.shopid }')" style="width: 227px;cursor:position;height: 300px;overflow: hidden; float: left;margin-left: 12px;cursor: pointer;" >
 							<dl class="tus">
 							  	<dt><img src="${sysl.si.image }" width="180" height="180px"></dt>
 							  	<dd style="overflow: hidden;height: 40px;">${sysl.si.shopname }</dd>
@@ -406,7 +411,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				</div>
   				<div class="zhuti_one">
   					<c:forEach items="${ShouYeShopList1 }" var="sysl" begin="2"    end="7">
-  						<div onclick="window.open('ShangYi.do?State=Select&ShopId=${sysl.shopid }')"  style="width: 227px;height: 300px;overflow: hidden; float: left;cursor: pointer;" class="shangpins">
+  						<div onclick="window.open('ShangYi?State=Select&ShopId=${sysl.shopid }')"  style="width: 227px;height: 300px;overflow: hidden; float: left;cursor: pointer;" class="shangpins">
 							<dl class="tus">
 							  	<dt><img src="${sysl.si.image }" width="180" height="180px"></dt>
 							  	<dd style="overflow: hidden;height: 40px;">${sysl.si.shopname }</dd>
@@ -430,7 +435,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   						<img src="Image/Index_Image/KuZi/banner.jpg" style="margin-left: 10px;margin-top: 10px" width="448px">
   					</div>
   					<c:forEach items="${ShouYeShopList2 }" var="sysl" begin="0"    end="1">
-  						<dl onclick="window.open('ShangYi.do?State=Select&ShopId=${sysl.shopid }')"  style="margin-left: 9px;">
+  						<dl onclick="window.open('ShangYi?State=Select&ShopId=${sysl.shopid }')"  style="margin-left: 9px;">
 						  	<dt><img  class="img-style row3" src="${sysl.si.image }" width="180" height="180px"></dt>
 						  	<dd style="overflow: hidden;height: 40px;">${sysl.si.shopname }</dd>
 						  	<dd></dd>
@@ -440,7 +445,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				</div>
   				<div class="zhuti_one">
   					<c:forEach items="${ShouYeShopList2 }" var="sysl" begin="2"    end="7">
-  						<dl onclick="window.open('ShangYi.do?State=Select&ShopId=${sysl.shopid }')"  style="margin-right: 10px;">
+  						<dl onclick="window.open('ShangYi?State=Select&ShopId=${sysl.shopid }')"  style="margin-right: 10px;">
 						  	<dt><img  class="img-style row3" src="${sysl.si.image }" width="180" height="180px"></dt>
 						  	<dd style="overflow: hidden;height: 40px;">${sysl.si.shopname }</dd>
 						  	<dd></dd>
@@ -464,7 +469,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   					<div class="wrapper">
 						<ul>
 							<c:forEach items="${ShouYeShopList3 }" var="sysl" begin="0"    end="1">
-								<li style="margin-left: 11px;" onclick="window.open('ShangYi.do?State=Select&ShopId=${sysl.shopid }')" >
+								<li style="margin-left: 11px;" onclick="window.open('ShangYi?State=Select&ShopId=${sysl.shopid }')" >
 								<div class='picBox'>
 									<div class='show'>
 										<dl>
@@ -487,7 +492,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   					<div class="wrapper">
 						<ul>
 							<c:forEach items="${ShouYeShopList3 }" var="sysl" begin="2"    end="7">
-								<li style="margin-left: 7px;" onclick="window.open('ShangYi.do?State=Select&ShopId=${sysl.shopid }')" >
+								<li style="margin-left: 7px;" onclick="window.open('ShangYi?State=Select&ShopId=${sysl.shopid }')" >
 								<div class='picBox'>
 									<div class='show'>
 										<dl>
@@ -1094,8 +1099,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	return false;
         }
     })
-    
-    
+
+
     $(function (){
     	$("[name=Name]").blur(function(){
         	if($("[name=Name]").val() == ""){

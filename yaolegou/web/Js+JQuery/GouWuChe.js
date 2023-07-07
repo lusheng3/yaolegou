@@ -8,6 +8,10 @@ $(function (){
 		var counts = $(input[i]).parent().parent().children().eq(12).children().eq(0).children().eq(1).val();
 		sums += parseFloat(danjia) * parseFloat(counts);
 	}
+	// var prices = $('.danjia');
+	// $.each(prices, function(i, n){
+	// 	sums += parseFloat($(n).text().substr(1));
+	// });
 	$("#jg2").html("￥"+sums+".0");
 })
 
@@ -187,11 +191,11 @@ function addcount(zhe){
 	$(zhe).parent().parent().next().children().html("￥"+jiage+".0");
 	$(zhe).prev().val(count);
 	
-	var shopid = $(zhe).parent().parent().parent().children().eq(0).val();
+	var shopid = $(zhe).parent().parent().parent().children().eq(2).val();
 	var username = $(zhe).parent().parent().parent().children().eq(1).val();
-	var id = $(zhe).parent().parent().parent().children().eq(2).val();
+	var id = $(zhe).parent().parent().parent().children().eq(0).val();
 	
-	$.post("GouWuChe.do?State=AddCount",{"id":id,"username":username,"shopid":shopid,"count":1},function (){
+	$.post("shopcart?State=updateCnt",{"id":id,"username":username,"shopid":shopid,"count":count},function (){
 		
 	})
 	var state = $(zhe).parent().parent().parent().children().eq(7).children().eq(0).is(':checked');
@@ -218,11 +222,11 @@ function jiancount(zhe){
 		$(zhe).next().val(count);
 		var jiage = parseInt($(zhe).parent().parent().prev().children().html())*count;
 		$(zhe).parent().parent().next().children().html("￥"+jiage+".0");
-		var shopid = $(zhe).parent().parent().parent().children().eq(0).val();
+		var shopid = $(zhe).parent().parent().parent().children().eq(2).val();
 		var username = $(zhe).parent().parent().parent().children().eq(1).val();
-		var id = $(zhe).parent().parent().parent().children().eq(2).val();
+		var id = $(zhe).parent().parent().parent().children().eq(0).val();
 		
-		$.post("GouWuChe.do?State=JianCount",{"id":id,"username":username,"shopid":shopid,"count":1},function (){
+		$.post("shopcart?State=updateCnt",{"id":id,"username":username,"shopid":shopid,"count":count},function (){
 			
 		})
 		var state = $(zhe).parent().parent().parent().children().eq(7).children().eq(0).is(':checked');
@@ -259,7 +263,7 @@ function deletes(obj){
 	var id = $(obj).parent().parent().children().eq(0).val();
     var is = confirm("确定要删除吗？");
     if(is == true){
-    	$.post("GouWuChe.do?State=del",{"username":username,"id":id},function (Data){
+    	$.post("shopcart?State=del",{"username":username,"id":id},function (Data){
     		if(Data == "true"){
     			$(obj).parent().parent().remove();
     			var input = document.getElementsByName("check");

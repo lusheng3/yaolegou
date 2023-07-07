@@ -49,6 +49,8 @@ $(function () {
         }
 
     })
+
+
     $("#yzm").click(function () {
         var phone = $("[name=phone]").val();
         if(!isNaN(phone) && phone != ""){
@@ -73,7 +75,8 @@ $(function () {
             alert("请输入正确的手机号码");
         }
 
-    	
+
+
     })
 })
 

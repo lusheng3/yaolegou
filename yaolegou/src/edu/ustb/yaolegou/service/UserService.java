@@ -24,11 +24,12 @@ public class UserService {
 
             if (u == null){
                 result = "用户名不存在!";
-            }else{
-                if (!user.getPassword().equals(u.getPassword())){
+            } else if(!user.getPassword().equals(u.getPassword())){
                     result = "密码有误，请重新输入";
                 }
-            }
+
+
+
 
             if("true".equals(result)){
                 user = u;
@@ -68,16 +69,17 @@ public class UserService {
             UserMapper userMapper = session.getMapper(UserMapper.class);
             result = userMapper.insertUser(user);
             result += userMapper.insertUserInfo(user);
+
             session.commit();
 
-        } catch(Exception ex){
-            ex.printStackTrace();
-            session.rollback();
-            result = 0;
-        }finally{
+            } catch(Exception ex){
+                ex.printStackTrace();
+                session.rollback();
+                result = 0;
+            }finally{
             //资源释放
-            session.close();
-        }
+                session.close();
+            }
 
         return result;
     }
@@ -97,10 +99,16 @@ public class UserService {
 
     public String sendSms(String phone, String code){
         String result = null;
+<<<<<<< HEAD
         //LTAI5tAUcj5XmNgEMJjHSi25
         //J9OWqch6pDv3tanJlOTIFrR13ZPS2B
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
                 //此处填写密钥
+=======
+//        LTAI5tFSVZVuiaiwvuXGicRS
+//        gsB4HfgzIRoiUHcjHq2I8Ms4ZwRCgO
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou","LTAI5tAUcj5XmNgEMJjHSi25","J9OWqch6pDv3tanJlOTIFrR13ZPS2B");
+>>>>>>> 2150f74 (实现基础的一些功能，例如登录注册之类的......)
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         request.setMethod(MethodType.POST);

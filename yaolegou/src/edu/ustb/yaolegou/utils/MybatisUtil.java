@@ -10,12 +10,14 @@ import java.sql.SQLException;
 
 public class MybatisUtil {
 
-    private static SqlSessionFactory sqlSessionFactory ;
+    private static SqlSessionFactory sqlSessionFactory;
+    private static SqlSession session = null;
     static {// 静态代码块，特点：运行一次。加载数据源对象
         InputStream inputStream = null;
         try {
             inputStream = Resources.getResourceAsStream("mybatis-config.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            session = sqlSessionFactory.openSession();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -24,6 +26,7 @@ public class MybatisUtil {
     }
 
     public static SqlSession getSession() throws SQLException {
+
         return sqlSessionFactory.openSession();
     }
 

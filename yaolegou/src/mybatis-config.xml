@@ -15,9 +15,11 @@
         </environment>
     </environments>
     <mappers>
-        <!--        <mapper resource="edu/ustb/dao/BannerMapper.xml"/>-->
+<!--        <mapper resource="edu/ustb/dao/ShopInfoMapper.xml"/>-->
         <mapper class="edu.ustb.yaolegou.dao.BannerMapper"/>
         <mapper class="edu.ustb.yaolegou.dao.UserMapper"/>
         <mapper class="edu.ustb.yaolegou.dao.ShopInfoMapper"/>
+        <mapper class="edu.ustb.yaolegou.dao.ShopcartMapper"/>
+        <mapper class="edu.ustb.yaolegou.dao.OrderInfoMapper"/>
     </mappers>
 </configuration>

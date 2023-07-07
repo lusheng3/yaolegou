@@ -6,19 +6,30 @@ public class User {
     private int id;
     private String userName;
     private String password;
+    private String yzm;
+    private String captcha;
 
+    public String getCaptcha() {
+        return captcha;
+    }
+
+    public void setCaptcha(String captcha) {
+        this.captcha = captcha;
+    }
+
+    public String getYzm() {
+        return yzm;
+    }
+
+    public void setYzm(String yzm) {
+        this.yzm = yzm;
+    }
 
     private int state;
     private Date CreateTime;
     private String userNick;
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    private String image;
+    private String phone;
 
     public String getImage() {
         return image;
@@ -28,9 +39,14 @@ public class User {
         this.image = image;
     }
 
-    private String phone;
+    public String getPhone() {
+        return phone;
+    }
 
-    private  String image;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
 
     public int getId() {
         return id;
@@ -44,8 +60,8 @@ public class User {
         return userName;
     }
 
-    public void setUserName(String username) {
-        this.userName = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -80,7 +96,6 @@ public class User {
         this.userNick = userNick;
     }
 
-
     @Override
     public String toString() {
         return "User{" +
@@ -89,7 +104,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", state=" + state +
                 ", CreateTime=" + CreateTime +
-                ", userNick='" +  + '\'' +
+                ", userNick='" + userNick + '\'' +
                 '}';
     }
 }
