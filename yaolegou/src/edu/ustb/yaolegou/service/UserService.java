@@ -99,16 +99,12 @@ public class UserService {
 
     public String sendSms(String phone, String code){
         String result = null;
-<<<<<<< HEAD
-        //LTAI5tAUcj5XmNgEMJjHSi25
-        //J9OWqch6pDv3tanJlOTIFrR13ZPS2B
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou",
-                //此处填写密钥
-=======
-//        LTAI5tFSVZVuiaiwvuXGicRS
-//        gsB4HfgzIRoiUHcjHq2I8Ms4ZwRCgO
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou","LTAI5tAUcj5XmNgEMJjHSi25","J9OWqch6pDv3tanJlOTIFrR13ZPS2B");
->>>>>>> 2150f74 (实现基础的一些功能，例如登录注册之类的......)
+
+
+
+
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou","","");
+
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         request.setMethod(MethodType.POST);
